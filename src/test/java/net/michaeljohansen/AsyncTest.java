@@ -21,11 +21,10 @@ public class AsyncTest {
     @Before
     public void setUp() throws Exception {
         asyncFactory = new AsyncFactory();
-
     }
 
     @Test
-    public void testName() throws Exception {
+    public void canRunTaskInBackground() throws Exception {
         Class<LongRunningTaskExecutor> modifiedClass = asyncFactory.getModifiedClass(LongRunningTaskExecutor.class);
         LongRunningTaskExecutor longRunningTaskExecutor = modifiedClass
                 .getConstructor(int.class)
@@ -35,7 +34,7 @@ public class AsyncTest {
         Future<Boolean> future = assertExecutionTime(
                 () -> longRunningTaskExecutor.executeTaskAsync(),
                 Duration.ofMillis(0),
-                Duration.ofMillis(5)
+                Duration.ofMillis(250)
         );
 
         Boolean result = assertExecutionTime(
