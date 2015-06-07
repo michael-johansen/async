@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 /**
  * Created by Michael on 01.06.2015.
  */
-public class AsyncAgentTest {
+public class RetryTest {
     private AsyncFactory asyncFactory;
 
     @Before
